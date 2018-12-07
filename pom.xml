@@ -36,7 +36,7 @@
 
 
     <build>
-        <finalName>wizari-framework</finalName>
+        <finalName>wizari-sapper</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -53,7 +53,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.gmail.danze.trash.RunGame</mainClass>
+                            <mainClass>com.gmail.wizaripost.trash.Sapper</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
