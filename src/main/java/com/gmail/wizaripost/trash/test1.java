@@ -3,8 +3,6 @@ package com.gmail.wizaripost.trash;
 import com.gmail.wizaripost.game.saper.utils.SapperHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class test1 {
     public static void main(String[] args) {
@@ -38,7 +36,7 @@ public class test1 {
                 if (i != 0 && j != 0) {
                     sum += matrix[i - 1][j - 1];
                 }
-                if (i != 10- 1 && j != 10 - 1) {
+                if (i != 10 - 1 && j != 10 - 1) {
                     sum += matrix[i + 1][j + 1];
                 }
                 if (i != 0 && j != matrix[0].length - 1) {
@@ -69,9 +67,8 @@ public class test1 {
         }
 
 
-
-        int yAxis = 4;
-        int xAxis = 4;
+        int yAxis = 9;
+        int xAxis = 8;
 
 //        List<Integer> yCoord = Arrays.asList();
 //        List<Integer> xCoord = Arrays.asList();
@@ -85,9 +82,11 @@ public class test1 {
 
         int j = 0;
         for (int i = 0; i < yCoord.size(); i++, j++) {
-            int y = yCoord.get(i);
-            int x = xCoord.get(j);
-            if (arr [y][x] == 0) {
+            final int y = yCoord.get(i);
+            final int x = xCoord.get(j);
+            openField[yAxis][xAxis] = 10;
+
+            if (arr[yCoord.get(0)][xCoord.get(0)] == 0) {
 
                 if (y != 0 && openField[y - 1][x] != 10) {
                     if (arr[y - 1][x] == 0) {
@@ -104,16 +103,16 @@ public class test1 {
                     openField[y + 1][x] = 10;
 
                 }
-                if (y != 0 && openField[y][x - 1] != 10) {
+                if (x != 0 && openField[y][x - 1] != 10) {
                     if (arr[y][x - 1] == 0) {
                         yCoord.add(y);
                         xCoord.add(x - 1);
                     }
                     openField[y][x - 1] = 10;
-                    
+
 
                 }
-                if (y != matrix[0].length - 1 && openField[y][x + 1] != 10) {
+                if (x != matrix[0].length - 1 && openField[y][x + 1] != 10) {
                     if (arr[y][x + 1] == 0) {
                         yCoord.add(y);
                         xCoord.add(x + 1);
@@ -160,12 +159,7 @@ public class test1 {
 
         }
 
-            
-            
-            
-            
-            
-            
+
 //            if (arr [y][x] == 0) {
 //
 //                if (y != 0) {
@@ -237,17 +231,21 @@ public class test1 {
 //
 //
 //        }
-
+        System.out.println(" ");
         for (int i = 0; i < openField.length; i++) {
-            System.out.println(" ");
+            System.out.print(">");
+//            System.out.println(">");
+//            System.out.println(" <<");
             for (int gg = 0; gg < openField[0].length; gg++) {
+//                System.out.print("");
                 System.out.print(openField[i][gg]);
+                if (openField [i][gg] == 0) {
+                    System.out.print(" ");
+                }
+                System.out.print(", ");
             }
-
+            System.out.println(" <<");
         }
-
-
-
 
 
     }
