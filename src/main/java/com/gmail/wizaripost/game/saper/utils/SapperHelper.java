@@ -110,8 +110,8 @@ public class SapperHelper {
 
         int j = 0;
         for (int i = 0; i < yCoord.size(); i++, j++) {
-            final int y = yCoord.get(i);
-            final int x = xCoord.get(j);
+            int y = yCoord.get(i);
+            int x = xCoord.get(j);
             openField[yAxis][xAxis] = 10;
 
             if (matrix[yCoord.get(0)][xCoord.get(0)] == 0) {
@@ -149,6 +149,7 @@ public class SapperHelper {
 
                 }
 
+
                 if (y != 0 && x != 0 && openField[y - 1][x - 1] != 10) {
                     if (matrix[y - 1][x - 1] == 0) {
                         yCoord.add(y - 1);
@@ -163,7 +164,7 @@ public class SapperHelper {
                         xCoord.add(x + 1);
                     }
                     openField[y + 1][x + 1] = 10;
-
+//                    sum += matrix[y + 1][x + 1];
                 }
                 if (y != 0 && x != matrix[0].length - 1 && openField[y - 1][x + 1] != 10) {
                     if (matrix[y - 1][x + 1] == 0) {
@@ -171,7 +172,7 @@ public class SapperHelper {
                         xCoord.add(x + 1);
                     }
                     openField[y - 1][x + 1] = 10;
-
+//                    sum += matrix[i - 1][x + 1];
                 }
                 if (y != matrix.length - 1 && x != 0 && openField[y + 1][x - 1] != 10) {
                     if (matrix[y + 1][x - 1] == 0) {
@@ -179,9 +180,11 @@ public class SapperHelper {
                         xCoord.add(x - 1);
                     }
                     openField[y + 1][x - 1] = 10;
-
+//                    sum += matrix[y + 1][x - 1];
                 }
             }
+
+
         }
 
         return openField;

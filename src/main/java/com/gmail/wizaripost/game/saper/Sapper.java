@@ -1,22 +1,39 @@
 package com.gmail.wizaripost.game.saper;
 
 import com.gmail.wizaripost.game.saper.logic.SapperLogic;
+import com.gmail.wizaripost.game.saper.utils.SapperHelper;
 import com.gmail.wizaripost.game.saper.view.SapperWindow;
 
+import javax.swing.*;
+
 public class Sapper {
+    //    public int[][] calculateField;
+
+    public SapperWindow gameWindow;
+//private SapperWindow gameWindow = new SapperWindow("Sapper");
+//    private int[][] calculateField;
+
     public static void main(String[] args) {
+
         SapperWindow gameWindow = new SapperWindow("Sapper");
 
-//        Deck deck = new Deck(BlackJackHelper.shuffleDeck(BlackJackHelper.createDeck(), 1000));
+        int[][] calculateField = SapperHelper.calculateField(SapperHelper.createField(10, 10, 10));
 
-//        SapperLogic logic = new SapperLogic(gameWindow);
-//        SapperLogic logic = new SapperLogic(deck, gameWindow);
+        SapperLogic logic = new SapperLogic(calculateField, gameWindow);
 
         gameWindow.setVisible(true);
-//        logic.start();
 
-
-
+        logic.start();
 
     }
+
+//    public static void restart() {
+//        int[][] calculateField = SapperHelper.calculateField(SapperHelper.createField(10, 10, 10));
+//
+//        SapperLogic logic = new SapperLogic(calculateField, gameWindow);
+//
+//        logic.start();
+//    }
+
+
 }

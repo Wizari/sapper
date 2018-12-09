@@ -67,8 +67,8 @@ public class test1 {
         }
 
 
-        int yAxis = 9;
-        int xAxis = 8;
+        int yAxis = 4;
+        int xAxis = 4;
 
 //        List<Integer> yCoord = Arrays.asList();
 //        List<Integer> xCoord = Arrays.asList();
@@ -78,6 +78,7 @@ public class test1 {
 
         yCoord.add(yAxis);
         xCoord.add(xAxis);
+
         int[][] openField = new int[matrix.length][matrix[0].length];
 
         int j = 0;
