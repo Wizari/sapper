@@ -26,11 +26,11 @@ public class Sapper {
         logic.start();
 
     }
-
+//
 //    public static void restart() {
 //        int[][] calculateField = SapperHelper.calculateField(SapperHelper.createField(10, 10, 10));
 //
-//        SapperLogic logic = new SapperLogic(calculateField, gameWindow);
+//        SapperLogic logic = new SapperLogic(calculateField);
 //
 //        logic.start();
 //    }
