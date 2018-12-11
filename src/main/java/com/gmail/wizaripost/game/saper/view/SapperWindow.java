@@ -176,7 +176,7 @@ public class SapperWindow extends JFrame {
 //    }
 
     public void addBackground(int[][] calculateField) {
-        JLabel back = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\pesok3.jpg"));
+        JLabel back = new JLabel(new ImageIcon(this.getClass().getResource("/pesok3.jpg")));
         this.back = back;
         back.setFont(null);
         back.setBounds(0, 0, 500, 500);
@@ -193,7 +193,9 @@ public class SapperWindow extends JFrame {
 
                 field[i][j].setIcon(null);
                 if (calculateField[i][j] >= 100) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\bucket.png"));
+//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\bucket.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/bucket.png")));
+//                    .getResource("/16070.png")
                     contentPanel.add(field[i][j]);
                 }
 
@@ -203,47 +205,56 @@ public class SapperWindow extends JFrame {
 
                 if (calculateField[i][j] == 1) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\1.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/1.png")));
                     contentPanel.add(field[i][j]);
                 }
                 if (calculateField[i][j] == 2) {
                     ImageIcon imageIcon = new ImageIcon();
 
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\2.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/2.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 3) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\3.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/3.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 4) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\4.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/4.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 5) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\5.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/5.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 6) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\6.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/6.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 7) {
                     field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\7.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/7.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 8) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\8.png"));
+//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\8.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/8.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 9) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\92.png"));
+//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\92.png"));
+                    field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/92.png")));
                     contentPanel.add(field[i][j]);
                 }
 
