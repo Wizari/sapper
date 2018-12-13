@@ -1,36 +1,36 @@
 package com.gmail.wizaripost.game.saper.logic;
 
 import com.gmail.wizaripost.game.saper.utils.SapperHelper;
-import com.gmail.wizaripost.game.saper.view.SapperWindow;
+import com.gmail.wizaripost.game.saper.view.IGameView;
 
 import java.awt.*;
 
 
 public class SapperLogic {
 
-    private SapperWindow window;
+    private IGameView view;
     private int[][] fieldd;
     private int[][] newField;
     private Component constructField;
     private int add;
 
-    public SapperLogic(int[][] field, SapperWindow window) {
+    public SapperLogic(int[][] field, IGameView view) {
         this.fieldd = field;
-        this.window = window;
+        this.view = view;
 
     }
 
     public void start() {
-//        window.constructButtonRestart("Restart!");
+//        view.constructButtonRestart("Restart!");
         add = 0;
         int field[][] = SapperHelper.calculateField(SapperHelper.createField(10, 10, 10));
         int[][] openArr = new int[field.length][field.length];
-        window.addBackground(field);
+        view.addBackground(field);
 
 
-        window.addRestartListener(e -> {
-            window.closeBox();
-            window.clearBackground();
+        view.addRestartListener(e -> {
+            view.closeBox();
+            view.clearBackground();
             int[][] newField = SapperHelper.calculateField(SapperHelper.createField(10, 10, 10));
 //            System.out.println("Restart");
             for (int i = 0; i < field[0].length; i++) {
@@ -39,22 +39,22 @@ public class SapperLogic {
                     field[i][j] = newField[i][j];
                     add = 0;
                     openArr[i][j] = 0;
-                    window.restartButtonRestart("Restart!");
+                    view.restartButtonRestart("Restart!");
 
                 }
             }
-            window.addBackground(field);
+            view.addBackground(field);
         });
 
-        window.addRigthClickListener((row, column) -> {
-//            window.clearBackground();
-//            window.openBox(row, column);
+        view.addRigthClickListener((row, column) -> {
+//            view.clearBackground();
+//            view.openBox(row, column);
 //            field[row][column] += 100;
             if (field[row][column] >= 100) {
                 field[row][column] -= 100;
-                window.closeBox(row, column);
-                window.clearBackground();
-                window.addBackground(field);
+                view.closeBox(row, column);
+                view.clearBackground();
+                view.addBackground(field);
                 if (field[row][column] == 9) {
                     add--;
                 }
@@ -64,10 +64,10 @@ public class SapperLogic {
 //            if (field[row][column] < 100) {
 
                 field[row][column] += 100;
-                window.clearBackground();
-                window.addBackground(field);
-//                window.closeBox(row, column);
-                window.openBox(row, column);
+                view.clearBackground();
+                view.addBackground(field);
+//                view.closeBox(row, column);
+                view.openBox(row, column);
                 if (field[row][column] == 9) {
                     add++;
                 }
@@ -76,30 +76,30 @@ public class SapperLogic {
             }
 
             System.out.println("Нажата правая кнопка " + row + " - " + column);
-//            window.clearBackground();
-//            window.addBackground(field);
+//            view.clearBackground();
+//            view.addBackground(field);
         });
 
-        window.addListener((row, column) -> {
+        view.addListener((row, column) -> {
             if (field[row][column] >= 100) {
                 field[row][column] -= 100;
-                window.clearBackground();
-                window.addBackground(field);
-                window.openBox(row, column);
+                view.clearBackground();
+                view.addBackground(field);
+                view.openBox(row, column);
                 if (field[row][column] == 9) {
-                    window.restartButtonRestart("Boom!");
+                    view.restartButtonRestart("Boom!");
                     System.out.println("boom!");
                 }
             }
 
-//            window.addRightClick(row, column);
+//            view.addRightClick(row, column);
 
 
-//            window.addBackground(field);
-            window.openBox(row, column);
+//            view.addBackground(field);
+            view.openBox(row, column);
             int[][] open = SapperHelper.openEmptyFields(field, column, row);
             if (field[row][column] != 0 && field[row][column] != 9) {
-                window.openBox(row, column);
+                view.openBox(row, column);
 //                System.out.println(field[row][column]);
                 openArr[row][column] = 10;
             }
@@ -112,7 +112,7 @@ public class SapperLogic {
                     for (int j = 0; j < field.length; j++) {
                         if (open[i][j] == 10) {
                             openArr[i][j] = 10;
-                            window.openBox(i, j);
+                            view.openBox(i, j);
 
                         }
 
@@ -121,14 +121,14 @@ public class SapperLogic {
 
             }
             if (field[row][column] == 9) {
-//                window.alertWindow();
+//                view.alertWindow();
                 System.out.println("Boom2!");
-                window.restartButtonRestart("Boom!");
+                view.restartButtonRestart("Boom!");
                 for (int i = 0; i < field[0].length; i++) {
 
                     for (int j = 0; j < field.length; j++) {
                         if (field[i][j] == 9) {
-                            window.openBox(i, j);
+                            view.openBox(i, j);
                         }
                     }
                 }
@@ -136,7 +136,7 @@ public class SapperLogic {
 
                     for (int j = 0; j < field.length; j++) {
                         if (field[i][j] == 9) {
-                            window.openBox(i, j);
+                            view.openBox(i, j);
                         }
                     }
                 }
@@ -155,7 +155,7 @@ public class SapperLogic {
                         int[][] arr = new int[field.length][field.length];
                         for (int ix = 0; ix < openArr.length; ix++) {
                             for (int jx = 0; jx < openArr[0].length; jx++) {
-                                window.openBox(ix,jx);
+                                view.openBox(ix,jx);
                                 if (field[row][column] == 109) {
                                     arr[ix][jx] = 9;
                                 } else {
@@ -163,9 +163,9 @@ public class SapperLogic {
                                 }
                             }
                         }
-                        window.clearBackground();
-                        window.addBackground(arr);
-                        window.restartButtonRestart("Victory!");
+                        view.clearBackground();
+                        view.addBackground(arr);
+                        view.restartButtonRestart("Victory!");
                         System.out.println("Win!!");
 
                     }

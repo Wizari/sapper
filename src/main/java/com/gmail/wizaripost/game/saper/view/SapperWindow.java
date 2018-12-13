@@ -5,22 +5,15 @@ import com.gmail.wizaripost.game.saper.logic.IClickListener;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.stage.Modality;
-import javafx.stage.*;
+
 //import javafx.scene.text.Font;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.geometry.*;
 
 
-public class SapperWindow extends JFrame {
+public class SapperWindow extends JFrame implements IGameView {
 
     private JPanel fildeButton;
     private JButton[][] buttons = new JButton[10][10];
@@ -28,7 +21,7 @@ public class SapperWindow extends JFrame {
     private int[][] calculateField;
     private JPanel contentPanel = new JPanel();
     private JButton restartButton;
-//    private JButton victoryButton;
+    //    private JButton victoryButton;
     private JLabel back;
 //    public static final int DEFAULT_WIDTH = 700;
 //    public static final int DEFAULT_HEIGHT = 600;
@@ -39,10 +32,6 @@ public class SapperWindow extends JFrame {
     private List<IClickListener> listenerList = new ArrayList<IClickListener>();
     private List<IClickListener> rightClickListeners = new ArrayList<IClickListener>();
 
-    public SapperWindow(int[][] calculateField) {
-        this.calculateField = calculateField;
-
-    }
 
     public SapperWindow(String title) {
         super(title);
@@ -94,10 +83,16 @@ public class SapperWindow extends JFrame {
 
     }
 
+    @Override
     public void restartButtonRestart(String title) {
         restartButton.setText(title);
 
-}
+    }
+
+
+    public void helloVania() {
+
+    }
 
     private JButton constructButtonRestart(String title) {
         JButton button = new JButton(title);
@@ -127,18 +122,22 @@ public class SapperWindow extends JFrame {
 //
 //    }
 
+    @Override
     public void addRestartListener(ActionListener listener) {
         restartButton.addActionListener(listener);
     }
 
+    @Override
     public void addListener(IClickListener listener) {
         this.listenerList.add(listener);
     }
 
+    @Override
     public void addRigthClickListener(IClickListener listener) {
         this.rightClickListeners.add(listener);
     }
 
+    @Override
     public void openBox(int y, int x) {
 //        buttons[y][x].setVisible(false);
         buttons[y][x].setOpaque(false);
@@ -146,6 +145,7 @@ public class SapperWindow extends JFrame {
         buttons[y][x].setBorderPainted(false);
     }
 
+    @Override
     public void closeBox() {
         for (int i = 0; i < buttons.length; i++) {
             for (int j = 0; j < buttons[0].length; j++) {
@@ -159,6 +159,7 @@ public class SapperWindow extends JFrame {
 
     }
 
+    @Override
     public void closeBox(int y, int x) {
 //                buttons[y][x].setVisible(true);
         buttons[y][x].setOpaque(true);
@@ -166,15 +167,17 @@ public class SapperWindow extends JFrame {
         buttons[y][x].setBorderPainted(true);
     }
 
+    @Override
     public void clearBackground() {
         contentPanel.remove(back);
     }
-//    public void addBucket(int[][] calculateField) {
+
+    //    public void addBucket(int[][] calculateField) {
 //
 //        field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\bucket.png"));
 //        contentPanel.add(field[i][j]);
 //    }
-
+    @Override
     public void addBackground(int[][] calculateField) {
         JLabel back = new JLabel(new ImageIcon(this.getClass().getResource("/pesok3.jpg")));
         this.back = back;
@@ -193,7 +196,6 @@ public class SapperWindow extends JFrame {
 
                 field[i][j].setIcon(null);
                 if (calculateField[i][j] >= 100) {
-//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\bucket.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/bucket.png")));
 //                    .getResource("/16070.png")
                     contentPanel.add(field[i][j]);
@@ -204,56 +206,48 @@ public class SapperWindow extends JFrame {
                 }
 
                 if (calculateField[i][j] == 1) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\1.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/1.png")));
                     contentPanel.add(field[i][j]);
                 }
                 if (calculateField[i][j] == 2) {
                     ImageIcon imageIcon = new ImageIcon();
 
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\2.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/2.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 3) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\3.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/3.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 4) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\4.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/4.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 5) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\5.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/5.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 6) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\6.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/6.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 7) {
-                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\7.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/7.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 8) {
-//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\8.png"));
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/8.png")));
                     contentPanel.add(field[i][j]);
                 }
 
                 if (calculateField[i][j] == 9) {
-//                    field[i][j] = new JLabel(new ImageIcon("C:\\Users\\Ivan\\Desktop\\dd\\numbers\\cop\\92.png"));
+
                     field[i][j] = new JLabel(new ImageIcon(this.getClass().getResource("/92.png")));
                     contentPanel.add(field[i][j]);
                 }
@@ -281,8 +275,8 @@ public class SapperWindow extends JFrame {
 //        return alertP;
 //    }
 
-    public void alertWindow() {
-
+//    public void alertWindow() {
+//
 
 //        JLabel alert = new JLabel();
 ////        alert.add(owner);
@@ -311,5 +305,5 @@ public class SapperWindow extends JFrame {
 //        panel.add(ok);
 ////            contentPanel.add(panel, BorderLayout.SOUTH);
 //        panel.setSize(200, 100);
-    }
+//    }
 }
